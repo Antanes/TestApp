@@ -17,10 +17,10 @@ namespace TestApp.Application.Machines.Queries.GetMachineDetails
     public class GetMachineDetailsQueryHandler
         : IRequestHandler<GetMachineDetailsQuery, MachineDetailsVm>
     {
-        private readonly IDrinksDbContext _dbContext;
+        private readonly IApplicationDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public GetMachineDetailsQueryHandler(IDrinksDbContext dbContext,
+        public GetMachineDetailsQueryHandler(IApplicationDbContext dbContext,
             IMapper mapper) => (_dbContext, _mapper) = (dbContext, mapper);
 
         public async Task<MachineDetailsVm> Handle(GetMachineDetailsQuery request,

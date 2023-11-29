@@ -11,12 +11,12 @@ namespace TestApp.Persistence
             services, IConfiguration configuration)
         {
             var connectionString = configuration["DbConnection"];
-            services.AddDbContext<DrinksDbContext>(options =>
+            services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(connectionString);
             });
-            services.AddScoped<IDrinksDbContext>(provider =>
-                provider.GetService<DrinksDbContext>());
+            services.AddScoped<IApplicationDbContext>(provider =>
+                provider.GetService<ApplicationDbContext>());
             return services;
         }
     }

@@ -9,9 +9,9 @@ namespace TestApp.Application.Drinks.Commands.DeleteDrink
     public class DeleteDrinkCommandHandler
         : IRequestHandler<DeleteDrinkCommand>
     {
-        private readonly IDrinksDbContext _dbContext;
+        private readonly IApplicationDbContext _dbContext;
 
-        public DeleteDrinkCommandHandler(IDrinksDbContext dbContext) =>
+        public DeleteDrinkCommandHandler(IApplicationDbContext dbContext) =>
             _dbContext = dbContext;
 
         public async Task Handle(DeleteDrinkCommand request,

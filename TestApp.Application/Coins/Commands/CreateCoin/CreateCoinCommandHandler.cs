@@ -10,9 +10,9 @@ namespace TestApp.Application.Coins.Commands.CreateCoin
     public class CreateCoinCommandHandler
         : IRequestHandler<CreateCoinCommand, Guid>
     {
-        private readonly IDrinksDbContext _dbContext;
+        private readonly IApplicationDbContext _dbContext;
 
-        public CreateCoinCommandHandler(IDrinksDbContext dbContext) =>
+        public CreateCoinCommandHandler(IApplicationDbContext dbContext) =>
             _dbContext = dbContext;
 
         public async Task<Guid> Handle(CreateCoinCommand request,

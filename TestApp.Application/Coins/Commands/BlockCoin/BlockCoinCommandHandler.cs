@@ -12,9 +12,9 @@ namespace TestApp.Application.Coins.Commands.BlockCoin
 {
     public class BlockCoinCommandHandler : IRequestHandler<BlockCoinCommand>
     {
-        private readonly IDrinksDbContext _dbContext;
+        private readonly IApplicationDbContext _dbContext;
 
-        public BlockCoinCommandHandler(IDrinksDbContext dbContext) =>
+        public BlockCoinCommandHandler(IApplicationDbContext dbContext) =>
             _dbContext = dbContext;
 
         public async Task Handle(BlockCoinCommand request,

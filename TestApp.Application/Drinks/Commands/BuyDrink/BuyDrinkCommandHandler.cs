@@ -13,9 +13,9 @@ namespace TestApp.Application.Drinks.Commands.BuyDrink
 {
     public class BuyDrinkCommandHandler : IRequestHandler<BuyDrinkCommand>
     {
-        private readonly IDrinksDbContext _dbContext;
+        private readonly IApplicationDbContext _dbContext;
 
-        public BuyDrinkCommandHandler(IDrinksDbContext dbContext) =>
+        public BuyDrinkCommandHandler(IApplicationDbContext dbContext) =>
             _dbContext = dbContext;
 
         public async Task Handle(BuyDrinkCommand request,

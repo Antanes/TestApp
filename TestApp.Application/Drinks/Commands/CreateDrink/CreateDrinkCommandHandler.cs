@@ -7,9 +7,9 @@ namespace TestApp.Application.Drinks.Commands.CreateDrink
     public class CreateDrinkCommandHandler
         : IRequestHandler<CreateDrinkCommand, Guid>
     {
-        private readonly IDrinksDbContext _dbContext;
+        private readonly IApplicationDbContext _dbContext;
 
-        public CreateDrinkCommandHandler(IDrinksDbContext dbContext) =>
+        public CreateDrinkCommandHandler(IApplicationDbContext dbContext) =>
             _dbContext = dbContext;
 
         public async Task<Guid> Handle(CreateDrinkCommand request,

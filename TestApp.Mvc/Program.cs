@@ -23,7 +23,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAutoMapper(config =>
 {
     config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
-    config.AddProfile(new AssemblyMappingProfile(typeof(IDrinksDbContext).Assembly));
+    config.AddProfile(new AssemblyMappingProfile(typeof(IApplicationDbContext).Assembly));
 });
 
 
@@ -37,7 +37,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var service = scope.ServiceProvider;
-    var context = service.GetService<DrinksDbContext>();
+    var context = service.GetService<ApplicationDbContext>();
     DbInitializer.Initialize(context);
 }
 // Configure the HTTP request pipeline.

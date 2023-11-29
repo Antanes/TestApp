@@ -10,9 +10,9 @@ namespace TestApp.Application.Drinks.Commands.UpdateDrink
 {
     public class UpdateDrinkCommandHandler : IRequestHandler<UpdateDrinkCommand>
     {
-        private readonly IDrinksDbContext _dbContext;
+        private readonly IApplicationDbContext _dbContext;
 
-        public UpdateDrinkCommandHandler(IDrinksDbContext dbContext) =>
+        public UpdateDrinkCommandHandler(IApplicationDbContext dbContext) =>
             _dbContext = dbContext;
 
         public async Task Handle(UpdateDrinkCommand request,
