@@ -1,5 +1,5 @@
 Проект выполнен в програмной среде Visual Studio 2022 Community с использованием чистой архитектуры, Dependency Injection, библиотеки Automapper, паттерна CQRS и библиотеки MediatR (паттерн Посредник). 
-В проекте присутствуют три основных уровня Core, Infrastructure, Presentation. Core содержит в себе два подуровня Domain и Application. Domain содержит Enterprice-логику, а Application бизнес-логику. Infrastructure содержит всё, что относится к взаимодействию с БД. Presentation - уровень представления, стандартный MVC проект. Presentation и Infrastructure зависят от Core, а Core не содержит прямых зависимостей, а только через интерфейсы и абстракции.
+В проекте присутствуют три основных уровня: Core, Infrastructure, Presentation. Core содержит в себе два подуровня Domain и Application. Domain содержит Enterprice-логику, а Application бизнес-логику. Infrastructure содержит всё, что относится к взаимодействию с БД. Presentation - уровень представления, стандартный MVC проект. Presentation и Infrastructure зависят от Core, а Core не содержит прямых зависимостей, а только через интерфейсы и абстракции.
 
 Слой Domain хранит в себе классы сущностей Drink, Coin и Machine
 
