@@ -27,7 +27,7 @@
 
 -Содержит папку EntityTypeConfigurations, в ней содержится все что относится к конфигурации сущностей. Она содержит классы, реализующие интерфейс IEntityTypeConfiguration из пространства имен Microsoft.EntityFrameworkCore. Такой подход позволяет разделять конфигурации сущностей на отдельный классы, а не в методе OnModelCreating, а также достигается концептуальное разделение 
 
--Класс DrinksDbContext реализает интерфейс IDrinksDbContext, а также наследующийся от класса DbContext из Microsoft.EntityFrameworkCore. Мы не используем паттерн Репозиторий и UnitOfWork. DbContext работает как UnitOfWork, DbSet как репозиторий
+-Класс DrinksDbContext реализает интерфейс IApplicationDbContext, а также наследующийся от класса DbContext из Microsoft.EntityFrameworkCore. Мы не используем паттерн Репозиторий и UnitOfWork. DbContext работает как UnitOfWork, DbSet как репозиторий
 
 -Класс DbInitializer содержит один метод Initialize, который при старте приложения проверяет создана ли БД, а если нет, то она будет создана на основе DrinksDbContext.
 
