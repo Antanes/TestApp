@@ -30,8 +30,7 @@ namespace TestApp.Application.Machines.Queries.GetMachineDetails
                 .FirstOrDefaultAsync(machine =>
                 machine.Id == 1, cancellationToken);
             if (request.Logoff == true) { entity.Login = false; }
-            if (request.Pass == 123456)
-            { entity.Login = true; }
+            if (request.Pass == 123456) { entity.Login = true; }
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             entity.Drinks = await _dbContext.Drinks.ToListAsync();
