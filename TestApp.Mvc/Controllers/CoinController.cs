@@ -37,7 +37,7 @@ namespace TestApp.Mvc.Controllers
             var command = _mapper.Map<CreateCoinCommand>(createCoinDto);
 
             await Mediator.Send(command);
-            return command.ClientBalance;
+            return command.Value;
         }
 
         [HttpPost]

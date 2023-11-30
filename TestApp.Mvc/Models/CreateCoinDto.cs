@@ -11,8 +11,7 @@ namespace TestApp.Mvc.Models
 
         public int Value { get; set; }
         public bool OnClientBalance { get; set; }
-        public bool Blocked { get; set; }
-        public int ClientBalance { get; set; }
+
         public void Mapping(Profile profile)
         {
             profile.CreateMap<CreateCoinDto, CreateCoinCommand>()

@@ -10,8 +10,7 @@ namespace TestApp.Application.Coins.Commands.CreateCoin
         public int Value { get; set; }
 
         public bool OnClientBalance { get; set; }
-        public bool Blocked { get; set; }
-        public int ClientBalance { get; set; }
+       
 
     }
 }

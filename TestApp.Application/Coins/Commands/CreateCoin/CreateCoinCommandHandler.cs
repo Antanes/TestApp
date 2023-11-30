@@ -33,9 +33,9 @@ namespace TestApp.Application.Coins.Commands.CreateCoin
            
             machine.ClientBalance += request.Value;
 
-            request.ClientBalance = machine.ClientBalance;
-            
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            request.Value = machine.ClientBalance;
+
+             await _dbContext.SaveChangesAsync(cancellationToken);
 
             return coin.Id;
         }
