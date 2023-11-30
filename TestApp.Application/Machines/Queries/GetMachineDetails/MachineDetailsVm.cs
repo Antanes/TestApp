@@ -25,26 +25,26 @@ namespace TestApp.Application.Machines.Queries.GetMachineDetails
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Machine, MachineDetailsVm>()
-                .ForMember(drinkDto => drinkDto.Id,
-                    opt => opt.MapFrom(drink => drink.Id))
-                .ForMember(drinkDto => drinkDto.ClientBalance,
-                    opt => opt.MapFrom(drink => drink.ClientBalance))
-                .ForMember(drinkDto => drinkDto.Coin1quantity,
-                    opt => opt.MapFrom(drink => drink.Coin1quantity))
-                .ForMember(drinkDto => drinkDto.Coin2quantity,
-                    opt => opt.MapFrom(drink => drink.Coin2quantity))
-                .ForMember(drinkDto => drinkDto.Coin5quantity,
-                    opt => opt.MapFrom(drink => drink.Coin5quantity))
-                .ForMember(drinkDto => drinkDto.Coin10quantity,
-                    opt => opt.MapFrom(drink => drink.Coin10quantity))
-                .ForMember(drinkDto => drinkDto.Change,
-                    opt => opt.MapFrom(drink => drink.Change))
-                .ForMember(drinkDto => drinkDto.Drinks,
-                    opt => opt.MapFrom(drink => drink.Drinks))
-                .ForMember(drinkDto => drinkDto.Login,
-                    opt => opt.MapFrom(drink => drink.Login))
-                .ForMember(drinkDto => drinkDto.Coins,
-                    opt => opt.MapFrom(drink => drink.Coins));
+                .ForMember(machineDto => machineDto.Id,
+                    opt => opt.MapFrom(machine => machine.Id))
+                .ForMember(machineDto => machineDto.ClientBalance,
+                    opt => opt.MapFrom(machine => machine.ClientBalance))
+                .ForMember(machineDto => machineDto.Coin1quantity,
+                    opt => opt.MapFrom(machine => machine.Coin1quantity))
+                .ForMember(machineDto => machineDto.Coin2quantity,
+                    opt => opt.MapFrom(machine => machine.Coin2quantity))
+                .ForMember(machineDto => machineDto.Coin5quantity,
+                    opt => opt.MapFrom(machine => machine.Coin5quantity))
+                .ForMember(machineDto => machineDto.Coin10quantity,
+                    opt => opt.MapFrom(machine => machine.Coin10quantity))
+                .ForMember(machineDto => machineDto.Change,
+                    opt => opt.MapFrom(machine => machine.Change))
+                .ForMember(machineDto => machineDto.Drinks,
+                    opt => opt.MapFrom(machine => machine.Drinks))
+                .ForMember(machineDto => machineDto.Login,
+                    opt => opt.MapFrom(machine => machine.Login))
+                .ForMember(machineDto => machineDto.Coins,
+                    opt => opt.MapFrom(machine => machine.Coins));
 
         }
     }

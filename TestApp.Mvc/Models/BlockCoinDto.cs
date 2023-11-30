@@ -12,8 +12,8 @@ namespace TestApp.Mvc.Models
         {
             profile.CreateMap<BlockCoinDto, BlockCoinCommand>()
 
-                .ForMember(noteCommand => noteCommand.Value,
-                    opt => opt.MapFrom(noteDto => noteDto.Value));
+                .ForMember(coinCommand => coinCommand.Value,
+                    opt => opt.MapFrom(coinDto => coinDto.Value));
                 
         }
     }

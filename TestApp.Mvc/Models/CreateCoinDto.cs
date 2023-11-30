@@ -17,10 +17,10 @@ namespace TestApp.Mvc.Models
         {
             profile.CreateMap<CreateCoinDto, CreateCoinCommand>()
                 
-                .ForMember(noteCommand => noteCommand.Value,
-                    opt => opt.MapFrom(noteDto => noteDto.Value))
-                .ForMember(noteCommand => noteCommand.OnClientBalance,
-                    opt => opt.MapFrom(noteDto => noteDto.OnClientBalance));
+                .ForMember(coinCommand => coinCommand.Value,
+                    opt => opt.MapFrom(coinDto => coinDto.Value))
+                .ForMember(coinCommand => coinCommand.OnClientBalance,
+                    opt => opt.MapFrom(coinDto => coinDto.OnClientBalance));
         }
     }
 }

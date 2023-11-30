@@ -16,14 +16,14 @@ namespace TestApp.Mvc.Models
         public void Mapping(Profile profile)
         {
             profile.CreateMap<CreateDrinkDto, CreateDrinkCommand>()
-                .ForMember(noteCommand => noteCommand.Name,
-                    opt => opt.MapFrom(noteDto => noteDto.Name))
-                .ForMember(noteCommand => noteCommand.Price,
-                    opt => opt.MapFrom(noteDto => noteDto.Price))
-                .ForMember(noteCommand => noteCommand.Quantity,
-                    opt => opt.MapFrom(noteDto => noteDto.Quantity))
-                .ForMember(noteCommand => noteCommand.Avatar,
-                    opt => opt.MapFrom(noteDto => noteDto.Avatar));
+                .ForMember(drinkCommand => drinkCommand.Name,
+                    opt => opt.MapFrom(drinkDto => drinkDto.Name))
+                .ForMember(drinkCommand => drinkCommand.Price,
+                    opt => opt.MapFrom(drinkDto => drinkDto.Price))
+                .ForMember(drinkCommand => drinkCommand.Quantity,
+                    opt => opt.MapFrom(drinkDto => drinkDto.Quantity))
+                .ForMember(drinkCommand => drinkCommand.Avatar,
+                    opt => opt.MapFrom(drinkDto => drinkDto.Avatar));
         }
     }
 }
