@@ -75,9 +75,6 @@ namespace TestApp.Persistence
 
             
         }
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer("Data Source=Slots.mdf");
-        //}
+        
     }
 }
