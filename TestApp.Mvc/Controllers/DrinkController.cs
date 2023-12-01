@@ -73,7 +73,7 @@ namespace TestApp.Mvc.Controllers
             return RedirectToAction("GetMachineAdmin", "Machine");
         }
 
-        [HttpGet]
+        
         public async Task<IActionResult> Buy(Guid id)
         {
             var command = new BuyDrinkCommand
