@@ -7,7 +7,7 @@ namespace TestApp.Application.Drinks.Commands.CreateDrink
 {
     public class CreateDrinkCommand : IRequest<Guid>
     {
-        public Guid Id { get; set; }
+        
 
         public string Name { get; set; }
 

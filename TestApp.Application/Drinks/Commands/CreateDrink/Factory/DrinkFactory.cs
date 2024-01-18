@@ -11,7 +11,7 @@ namespace TestApp.Application.Drinks.Commands.CreateDrink.Factory
 {
     public class DrinkFactory : IDrinkFactory
     {
-        public Drink CreateDrink(string name, int price, int quantity, IFormFile? avatar)
+        public Drink Create(string name, int price, int quantity, IFormFile? avatar)
         {
             byte[] imageData;
             if (avatar != null)

@@ -15,6 +15,7 @@ using TestApp.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 using TestApp.Application.Drinks.Commands.CreateDrink.Factory;
+using TestApp.Application.Coins.Commands.CreateCoin.Factory;
 
 //using TestApp.Mvc.Middleware;
 //using TestApp.Mvc.Services;
@@ -28,6 +29,7 @@ builder.Services.AddAutoMapper(config =>
 });
 
 builder.Services.AddScoped<IDrinkFactory, DrinkFactory>();
+builder.Services.AddScoped<ICoinFactory, CoinFactory>();
 builder.Services.AddApplication();
 builder.Services.AddPersistence(builder.Configuration);
 

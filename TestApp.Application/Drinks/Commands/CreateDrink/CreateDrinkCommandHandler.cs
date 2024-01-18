@@ -17,7 +17,7 @@ namespace TestApp.Application.Drinks.Commands.CreateDrink
         public async Task<Guid> Handle(CreateDrinkCommand request,
             CancellationToken cancellationToken)
         {
-            var drink = _drinkFactory.CreateDrink(request.Name, request.Price, request.Quantity, request.Avatar);
+            var drink = _drinkFactory.Create(request.Name, request.Price, request.Quantity, request.Avatar);
 
             await _dbContext.Drinks.AddAsync(drink, cancellationToken);
             await _dbContext.SaveChangesAsync(cancellationToken);

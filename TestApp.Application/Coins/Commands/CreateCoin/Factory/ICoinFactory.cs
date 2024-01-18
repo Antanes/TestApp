@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using TestApp.Domain;
 
-namespace TestApp.Application.Drinks.Commands.CreateDrink.Factory
+namespace TestApp.Application.Coins.Commands.CreateCoin.Factory
 {
-    public interface IDrinkFactory
+    public interface ICoinFactory
     {
-        Drink Create(string name, int price, int quantity, IFormFile? avatar);
+        Coin Create (int value);
     }
 }

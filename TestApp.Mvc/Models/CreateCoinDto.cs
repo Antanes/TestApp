@@ -15,11 +15,9 @@ namespace TestApp.Mvc.Models
         public void Mapping(Profile profile)
         {
             profile.CreateMap<CreateCoinDto, CreateCoinCommand>()
-                
+
                 .ForMember(coinCommand => coinCommand.Value,
-                    opt => opt.MapFrom(coinDto => coinDto.Value))
-                .ForMember(coinCommand => coinCommand.OnClientBalance,
-                    opt => opt.MapFrom(coinDto => coinDto.OnClientBalance));
+                    opt => opt.MapFrom(coinDto => coinDto.Value));
         }
     }
 }
