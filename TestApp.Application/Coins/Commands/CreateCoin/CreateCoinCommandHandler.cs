@@ -22,14 +22,14 @@ namespace TestApp.Application.Coins.Commands.CreateCoin
             var coin = _coinFactory.Create(request.Value);
             await _dbContext.Coins.AddAsync(coin, cancellationToken);
 
-
+            //need service ++balance
             var machine = await _dbContext.Machines.FindAsync(1);
            
             machine.ClientBalance += request.Value;
 
             request.Value = machine.ClientBalance;
 
-             await _dbContext.SaveChangesAsync(cancellationToken);
+            await _dbContext.SaveChangesAsync(cancellationToken);
 
             return coin.Id;
         }

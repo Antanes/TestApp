@@ -18,10 +18,8 @@ namespace TestApp.Application.Drinks.Commands.UpdateDrink
         public async Task Handle(UpdateDrinkCommand request,
             CancellationToken cancellationToken)
         {
-            var entity =
-                await _dbContext.Drinks.FirstOrDefaultAsync(Drink =>
+            var entity = await _dbContext.Drinks.FirstOrDefaultAsync(Drink =>
                     Drink.Id == request.Id, cancellationToken);
-
 
             entity.Price = request.Price;
             entity.Quantity = request.Quantity;

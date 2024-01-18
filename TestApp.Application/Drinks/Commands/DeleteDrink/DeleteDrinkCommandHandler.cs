@@ -19,13 +19,9 @@ namespace TestApp.Application.Drinks.Commands.DeleteDrink
         {
             var entity = await _dbContext.Drinks
                 .FindAsync(new object[] { request.Id }, cancellationToken);
-
-            
-
             _dbContext.Drinks.Remove(entity);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
-            
         }
 
         

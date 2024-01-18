@@ -22,12 +22,8 @@ namespace TestApp.Application.Coins.Commands.BlockCoin
         {
             var entity = _dbContext.Coins.Where(p => p.Value == request.Value);
 
-            foreach (var coin in entity)               
-
+            foreach (var coin in entity)              
             if (coin.Blocked == true) { coin.Blocked = false; } else { coin.Blocked = true; }
-
-
-
 
             await _dbContext.SaveChangesAsync(cancellationToken);
 
