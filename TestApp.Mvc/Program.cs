@@ -14,6 +14,7 @@ using TestApp.Application.Interfaces;
 using TestApp.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
+using TestApp.Application.Drinks.Commands.CreateDrink.Factory;
 
 //using TestApp.Mvc.Middleware;
 //using TestApp.Mvc.Services;
@@ -26,7 +27,7 @@ builder.Services.AddAutoMapper(config =>
     config.AddProfile(new AssemblyMappingProfile(typeof(IApplicationDbContext).Assembly));
 });
 
-
+builder.Services.AddScoped<IDrinkFactory, DrinkFactory>();
 builder.Services.AddApplication();
 builder.Services.AddPersistence(builder.Configuration);
 
