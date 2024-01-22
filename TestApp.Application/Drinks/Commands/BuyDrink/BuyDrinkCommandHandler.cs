@@ -26,7 +26,6 @@ namespace TestApp.Application.Drinks.Commands.BuyDrink
 
             var machineQuery = await _dbContext.Machines.FindAsync(1);
             machineQuery.Coins = await _dbContext.Coins.ToListAsync();
-
                      
             machineQuery.Change = 0;
             machineQuery.Coin1quantity = 0;
@@ -37,36 +36,16 @@ namespace TestApp.Application.Drinks.Commands.BuyDrink
             if (entity.Quantity > 0 && entity.Price <= machineQuery.ClientBalance)
             {
                 entity.Quantity--;
-                Change();
-                ChangeDenomination();
+                machineQuery.Change = machineQuery.CalculateChange(machineQuery.ClientBalance, entity.Price);
+                machineQuery.DenominationChange = machineQuery.CalculateDenominations(machineQuery.Change);
+                machineQuery.Coin1quantity = machineQuery.DenominationChange[1];
+                machineQuery.Coin2quantity = machineQuery.DenominationChange[2];
+                machineQuery.Coin5quantity = machineQuery.DenominationChange[5];
+                machineQuery.Coin10quantity = machineQuery.DenominationChange[10];
                 foreach (var coin in machineQuery.Coins)
                 {
                     coin.OnClientBalance = false;
                 }
-            }
-
-            void Change()
-            {
-                machineQuery.ClientBalance -=  entity.Price;
-                machineQuery.Change = machineQuery.ClientBalance;
-            }
-
-            void ChangeDenomination()
-            {
-                int nominal10 = 10;
-                int nominal5 = 5;
-                int nominal2 = 2;
-
-                machineQuery.Coin10quantity = machineQuery.ClientBalance / nominal10;
-                machineQuery.ClientBalance -= machineQuery.Coin10quantity * nominal10;
-
-                machineQuery.Coin5quantity = machineQuery.ClientBalance / nominal5;
-                machineQuery.ClientBalance -= machineQuery.Coin5quantity * nominal5;
-
-                machineQuery.Coin2quantity = machineQuery.ClientBalance / nominal2;
-                machineQuery.ClientBalance -= machineQuery.Coin2quantity * nominal2;
-
-                machineQuery.Coin1quantity = machineQuery.ClientBalance;
                 machineQuery.ClientBalance = 0;
             }
 

@@ -17,7 +17,7 @@ namespace TestApp.Application.Machines.Queries.GetMachineDetails
         public int Coin1quantity { get; set; }
         public int Coin2quantity { get; set; }
         public int Coin5quantity { get; set; }
-        public int Coin10quantity { get; set; }
+        public int Coin10quantity { get; set; }        
         public ICollection<Drink> Drinks { get; set; }
         public ICollection<Coin> Coins { get; set; }
         public bool Login { get; set; }
@@ -36,7 +36,7 @@ namespace TestApp.Application.Machines.Queries.GetMachineDetails
                 .ForMember(machineDto => machineDto.Coin5quantity,
                     opt => opt.MapFrom(machine => machine.Coin5quantity))
                 .ForMember(machineDto => machineDto.Coin10quantity,
-                    opt => opt.MapFrom(machine => machine.Coin10quantity))
+                    opt => opt.MapFrom(machine => machine.Coin10quantity))                
                 .ForMember(machineDto => machineDto.Change,
                     opt => opt.MapFrom(machine => machine.Change))
                 .ForMember(machineDto => machineDto.Drinks,
