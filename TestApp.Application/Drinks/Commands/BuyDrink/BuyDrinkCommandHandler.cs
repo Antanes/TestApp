@@ -26,22 +26,15 @@ namespace TestApp.Application.Drinks.Commands.BuyDrink
 
             var machineQuery = await _dbContext.Machines.FindAsync(1);
             machineQuery.Coins = await _dbContext.Coins.ToListAsync();
-                     
-            machineQuery.Change = 0;
-            machineQuery.Coin1quantity = 0;
-            machineQuery.Coin2quantity = 0;
-            machineQuery.Coin5quantity = 0;
-            machineQuery.Coin10quantity = 0;
+
+            machineQuery = machineQuery.Reset(machineQuery);
 
             if (entity.Quantity > 0 && entity.Price <= machineQuery.ClientBalance)
             {
                 entity.Quantity--;
                 machineQuery.Change = machineQuery.CalculateChange(machineQuery.ClientBalance, entity.Price);
-                machineQuery.DenominationChange = machineQuery.CalculateDenominations(machineQuery.Change);
-                machineQuery.Coin1quantity = machineQuery.DenominationChange[1];
-                machineQuery.Coin2quantity = machineQuery.DenominationChange[2];
-                machineQuery.Coin5quantity = machineQuery.DenominationChange[5];
-                machineQuery.Coin10quantity = machineQuery.DenominationChange[10];
+                machineQuery = machineQuery.CalculateDenominations(machineQuery, machineQuery.Change);
+                
                 foreach (var coin in machineQuery.Coins)
                 {
                     coin.OnClientBalance = false;

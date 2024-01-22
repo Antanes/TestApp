@@ -35,7 +35,7 @@ builder.Services.AddPersistence(builder.Configuration);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-AppDomain.CurrentDomain.SetData("DataDirectory", "C:\\Users\\venam\\source\\repos\\TestApp\\TestApp.Persistence\\App_Data");
+AppDomain.CurrentDomain.SetData("DataDirectory", "C:\\Users\\Anton\\source\\repos\\TestApp\\TestApp.Persistence\\App_Data");
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {

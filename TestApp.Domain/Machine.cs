@@ -23,7 +23,7 @@ namespace TestApp.Domain
             int change = clientbalance - drinkprice;
             return change;
         }
-        public Dictionary<int, int> CalculateDenominations(int change)
+        public Machine CalculateDenominations(Machine machine, int change)
         {
             var denominations = new List<int> { 10, 5, 2, 1 };
             var changedenominations = new Dictionary<int, int>();
@@ -38,10 +38,21 @@ namespace TestApp.Domain
                 }
                 else changedenominations.Add(denomination, 0);
             }
-
-            return changedenominations;
+            machine.Coin1quantity = changedenominations[1];
+            machine.Coin2quantity = changedenominations[2];
+            machine.Coin5quantity = changedenominations[5];
+            machine.Coin10quantity = changedenominations[10];
+            return machine;
         }
 
-
+        public Machine Reset(Machine machine)
+        {
+            machine.Change = 0;
+            machine.Coin1quantity = 0;
+            machine.Coin2quantity = 0;
+            machine.Coin5quantity = 0;
+            machine.Coin10quantity = 0;
+            return machine;
+        }
     }
 }
