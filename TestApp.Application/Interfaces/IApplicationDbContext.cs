@@ -10,5 +10,6 @@ namespace TestApp.Application.Interfaces
         DbSet<Coin> Coins { get; set; }
         DbSet<Machine> Machines { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        
     }
 }

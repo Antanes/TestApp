@@ -14,18 +14,25 @@ using TestApp.Application.Drinks.Commands.UpdateDrink;
 
 using TestApp.Application.Coins.Commands.CreateCoin;
 using TestApp.Application.Drinks.Commands.BuyDrink;
+using TestApp.Application.Interfaces;
 
 namespace TestApp.Mvc.Controllers
 {
     public class DrinkController : Controller
     {
+        private readonly IBuyDrinkService _buyDrinkService;
         private IMediator _mediator;
         protected IMediator Mediator =>
             _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
         private readonly IMapper _mapper;
 
-        public DrinkController(IMapper mapper) => _mapper = mapper;
+        public DrinkController(IMapper mapper, IBuyDrinkService buyDrinkService)
+        {
+            _buyDrinkService = buyDrinkService;
+            _mapper = mapper;
+        }
+       
 
         [HttpGet]
         public ActionResult<Guid> Create()
@@ -76,12 +83,7 @@ namespace TestApp.Mvc.Controllers
         
         public async Task<IActionResult> Buy(Guid id)
         {
-            var command = new BuyDrinkCommand
-            {
-                Id = id
-
-            };
-            await Mediator.Send(command);
+            await _buyDrinkService.BuyDrink(id);
             return RedirectToAction("GetMachine", "Machine");
         }
     }
