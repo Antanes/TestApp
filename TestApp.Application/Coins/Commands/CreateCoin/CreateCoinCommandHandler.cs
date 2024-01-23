@@ -22,7 +22,7 @@ namespace TestApp.Application.Coins.Commands.CreateCoin
             var coin = _coinFactory.Create(request.Value);
             await _dbContext.Coins.AddAsync(coin, cancellationToken);
 
-            var machine = await _dbContext.Machines.FindAsync(1);           
+            var machine = _dbContext.Machines.FirstOrDefault(p => p.Id == 1);           
             machine.ClientBalance += request.Value;
             request.Value = machine.ClientBalance;
 

@@ -21,7 +21,7 @@ namespace TestApp.Application.Services
             var entity = await _dbContext.Drinks
                 .FindAsync(new object[] { id });
 
-            var machineQuery = await _dbContext.Machines.FindAsync(1);
+            var machineQuery = await _dbContext.Machines.FirstOrDefaultAsync(m => m.Id == 1);
             machineQuery.Coins = await _dbContext.Coins.ToListAsync();
 
             machineQuery = machineQuery.Reset(machineQuery);
