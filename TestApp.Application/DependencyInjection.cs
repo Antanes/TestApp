@@ -1,7 +1,9 @@
 ﻿using System.Reflection;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using TestApp.Application.Coins.Commands.CreateCoin.Factory;
+using TestApp.Application.Common.Behaviors;
 using TestApp.Application.Drinks.Commands.CreateDrink.Factory;
 using TestApp.Application.Interfaces;
 using TestApp.Application.Services;
@@ -17,6 +19,10 @@ namespace TestApp.Application
             services.AddScoped<IDrinkFactory, DrinkFactory>();
             services.AddScoped<ICoinFactory, CoinFactory>();
             services.AddScoped<IBuyDrinkService, BuyDrinkService>();
+            services
+                .AddValidatorsFromAssemblies(new[] { Assembly.GetExecutingAssembly() });
+            services.AddTransient(typeof(IPipelineBehavior<,>),
+                typeof(ValidationBehavior<,>));
 
             return services;
         }

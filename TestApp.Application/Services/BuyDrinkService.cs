@@ -39,8 +39,6 @@ namespace TestApp.Application.Services
                 machineQuery.ClientBalance = 0;
             }
 
-
-
             await _dbContext.SaveChangesAsync(default(CancellationToken));
 
         }
