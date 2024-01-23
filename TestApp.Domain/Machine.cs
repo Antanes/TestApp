@@ -15,9 +15,7 @@ namespace TestApp.Domain
         public int Coin5quantity { get; set; }
         public int Coin10quantity { get; set; }        
         public bool Login { get; set; }
-        [NotMapped]
-        public Dictionary<int, int> DenominationChange { get; set; }
-
+        
         public int CalculateChange(int clientbalance, int drinkprice)
         {
             int change = clientbalance - drinkprice;
