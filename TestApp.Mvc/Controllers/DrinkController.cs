@@ -11,9 +11,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using TestApp.Application.Drinks.Commands.DeleteDrink;
 using TestApp.Application.Drinks.Commands.UpdateDrink;
-
 using TestApp.Application.Coins.Commands.CreateCoin;
-using TestApp.Application.Drinks.Commands.BuyDrink;
 using TestApp.Application.Interfaces;
 
 namespace TestApp.Mvc.Controllers
