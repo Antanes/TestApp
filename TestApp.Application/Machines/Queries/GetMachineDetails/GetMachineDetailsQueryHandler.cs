@@ -29,6 +29,7 @@ namespace TestApp.Application.Machines.Queries.GetMachineDetails
             var entity = await _dbContext.Machines
                 .FirstOrDefaultAsync(machine =>
                 machine.Id == 1, cancellationToken);
+            entity.MachineState = Machine.State.IdleState;
             if (request.Logoff == true) { entity.Login = false; }
             if (request.Pass == 123456) { entity.Login = true; }
             await _dbContext.SaveChangesAsync(cancellationToken);

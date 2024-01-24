@@ -22,8 +22,9 @@ namespace TestApp.Application.Coins.Commands.CreateCoin
             var coin = _coinFactory.Create(request.Value);
             await _dbContext.Coins.AddAsync(coin, cancellationToken);
 
-            var machine = _dbContext.Machines.FirstOrDefault(m => m.Id == 1);           
-            machine.ClientBalance += request.Value;
+            var machine = _dbContext.Machines.FirstOrDefault(m => m.Id == 1);
+            machine.CoinInsert(request.Value);
+            //machine.ClientBalance += request.Value;
             request.Value = machine.ClientBalance;
 
             await _dbContext.SaveChangesAsync(cancellationToken);

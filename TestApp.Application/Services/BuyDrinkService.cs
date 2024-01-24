@@ -25,19 +25,7 @@ namespace TestApp.Application.Services
             machineQuery.Coins = await _dbContext.Coins.ToListAsync();
 
             machineQuery = machineQuery.Reset(machineQuery);
-
-            if (entity.Quantity > 0 && entity.Price <= machineQuery.ClientBalance)
-            {
-                entity.Quantity--;
-                machineQuery.Change = machineQuery.CalculateChange(machineQuery.ClientBalance, entity.Price);
-                machineQuery = machineQuery.CalculateDenominations(machineQuery, machineQuery.Change);
-
-                foreach (var coin in machineQuery.Coins)
-                {
-                    coin.OnClientBalance = false;
-                }
-                machineQuery.ClientBalance = 0;
-            }
+            machineQuery.DrinkSelect(entity, machineQuery);
 
             await _dbContext.SaveChangesAsync(default(CancellationToken));
 

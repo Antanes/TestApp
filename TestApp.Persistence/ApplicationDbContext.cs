@@ -67,7 +67,7 @@ namespace TestApp.Persistence
 
             builder.Entity<Domain.Machine>().Property(x => x.Id);
             builder.Entity<Domain.Machine>().HasData(
-               new Domain.Machine { Id = 1 }                
+               new Domain.Machine { Id = 1, MachineState = Domain.Machine.State.IdleState }                
             );
 
             builder.ApplyConfiguration(new DrinkConfiguration());
