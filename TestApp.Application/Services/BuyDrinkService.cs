@@ -32,10 +32,7 @@ namespace TestApp.Application.Services
                 machineQuery.Change = machineQuery.CalculateChange(machineQuery.ClientBalance, entity.Price);
                 machineQuery = machineQuery.CalculateDenominations(machineQuery, machineQuery.Change);
 
-                foreach (var coin in machineQuery.Coins)
-                {
-                    coin.OnClientBalance = false;
-                }
+               
                 machineQuery.ClientBalance = 0;
             }
 
