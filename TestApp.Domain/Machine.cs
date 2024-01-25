@@ -8,9 +8,21 @@ namespace TestApp.Domain
     public class Machine
     {
         public int Id { get; set; }
-        public ICollection<Drink> Drinks { get; set; }
-        public ICollection<Coin> Coins { get; set; }        
-        public int ClientBalance { get; set; }       
+        public List<Drink> Drinks { get; set; }
+        public List<Coin> Coins { get; set; }
+        private int _clientBalance;
+        public int ClientBalance
+        {
+            get
+            {
+                _clientBalance = Coins.Where(c => c.OnClientBalance).Sum(c => c.Value);
+                return _clientBalance;
+            }
+            set
+            {
+                _clientBalance = value;
+            }
+        }
         public int Change { get; set; }
         public int Coin1quantity { get; set; }
         public int Coin2quantity { get; set; }
@@ -34,16 +46,14 @@ namespace TestApp.Domain
             DrinkSelectionState
         }
 
-        StateMachine<State, Trigger> _machine;
-        StateMachine<State, Trigger>.TriggerWithParameters<int> _insertCoinTrigger;
+        StateMachine<State, Trigger> _machine;        
         StateMachine<State, Trigger>.TriggerWithParameters<Drink, Machine> _drinkSelectedTrigger;
 
         public Machine()
         {
             
             _machine = new StateMachine<State, Trigger>(() => MachineState, s => MachineState = s);
-
-            _insertCoinTrigger = _machine.SetTriggerParameters<int>(Trigger.CoinInserted);
+            
             _drinkSelectedTrigger = _machine.SetTriggerParameters<Drink, Machine>(Trigger.DrinkSelected);
 
             _machine.Configure(State.IdleState)
@@ -51,8 +61,8 @@ namespace TestApp.Domain
                 .Ignore(Trigger.DrinkSelected);                
 
             _machine.Configure(State.CoinInsertionState)
-                .OnEntryFrom(_insertCoinTrigger, (value, t) => OnCoinInsert(value))
-                .InternalTransition<int>(_insertCoinTrigger, (value, t) => OnCoinInsert(value))
+                .OnEntry(t => OnCoinInsert())
+                .InternalTransition(Trigger.CoinInserted, t => OnCoinInsert())                
                 .Permit(Trigger.DrinkSelected, State.DrinkSelectionState);
 
             _machine.Configure(State.DrinkSelectionState)
@@ -76,19 +86,18 @@ namespace TestApp.Domain
                 foreach (var coin in machine.Coins)
                 {
                     coin.OnClientBalance = false;
-                }
-                machine.ClientBalance = 0;
+                }                
                 Dispense();
             }
             else NotEnoughCoins();
         }
-        public void CoinInsert(int value)
+        public void CoinInsert()
         {
-            _machine.Fire(_insertCoinTrigger, value);
+            _machine.Fire(Trigger.CoinInserted);
         }
-        void OnCoinInsert (int value)
+        void OnCoinInsert()
         {
-            ClientBalance += value;
+            
         }
         public void NotEnoughCoins()
         {

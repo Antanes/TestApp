@@ -19,14 +19,14 @@ namespace TestApp.Application.Coins.Commands.CreateCoin
         public async Task<Guid> Handle(CreateCoinCommand request,
             CancellationToken cancellationToken)
         {
-            var coin = _coinFactory.Create(request.Value);
+            var coin = _coinFactory.Create(request.Value);            
             await _dbContext.Coins.AddAsync(coin, cancellationToken);
+            await _dbContext.SaveChangesAsync(cancellationToken);
 
             var machine = _dbContext.Machines.FirstOrDefault(m => m.Id == 1);
-            machine.CoinInsert(request.Value);
-            //machine.ClientBalance += request.Value;
+            machine.Coins = _dbContext.Coins.ToList();
+            machine.CoinInsert();            
             request.Value = machine.ClientBalance;
-
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             return coin.Id;

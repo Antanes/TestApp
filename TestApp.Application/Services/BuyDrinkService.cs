@@ -25,8 +25,7 @@ namespace TestApp.Application.Services
             machineQuery.Coins = await _dbContext.Coins.ToListAsync();
 
             machineQuery = machineQuery.Reset(machineQuery);
-            machineQuery.DrinkSelect(entity, machineQuery);
-
+            machineQuery.DrinkSelect(entity, machineQuery);           
             await _dbContext.SaveChangesAsync(default(CancellationToken));
 
         }
